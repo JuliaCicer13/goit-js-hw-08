@@ -64,14 +64,39 @@ const images = [
   },
 ];
 const galleryList = document.querySelector('.gallery');
+galleryList.classList.add('gallery');
 
+  linkElement.addEventListener('click', event => {
+    event.preventDefault();
+    if (event.target.classList.contains('gallery-image')) {
+      const largeImageSource =
+        event.target.dataset.source;
+      
+      console.log('Clicked on large image:', largeImageSource);
+  }
+  
+  });
 const galleryItems = images.map(image => {
+
   const listItem = document.createElement('li');
+  listItem.classList.add('gallery-item');
+
+  const linkElement = document.createElement('a');
+  linkElement.href = image.original;
+  linkElement.classList.add('gallery-link');
+  
+
   const imageElement = document.createElement('img');
-  imageElement.src = image.url;
-  imageElement.alt = image.alt;
-  imageElement.classList.add('gallery-item')
-  listItem.appendChild(imageElement);
+  imageElement.classList.add('gallery-image');
+  imageElement.src = image.preview;
+  imageElement.alt = image.description;
+  imageElement.setAttribute('data-source', image.original);
+
+  linkElement.appendChild(imageElement);
+  listItem.appendChild(linkElement);
+
+
+  
   return listItem;
 });
 
