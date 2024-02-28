@@ -99,6 +99,12 @@ galleryList.append(...galleryItems);
       const largeImageSource =
         event.target.dataset.source;
       
+      const instance =
+        basicLightbox.create(`<img src="${largeImageSource}" alt="LargeImage">`);
+      instance.show();
+      
+      
+      
       console.log('Clicked on large image:', largeImageSource);
   }
   
