@@ -66,16 +66,7 @@ const images = [
 const galleryList = document.querySelector('.gallery');
 galleryList.classList.add('gallery');
 
-  linkElement.addEventListener('click', event => {
-    event.preventDefault();
-    if (event.target.classList.contains('gallery-image')) {
-      const largeImageSource =
-        event.target.dataset.source;
-      
-      console.log('Clicked on large image:', largeImageSource);
-  }
-  
-  });
+ 
 const galleryItems = images.map(image => {
 
   const listItem = document.createElement('li');
@@ -101,3 +92,14 @@ const galleryItems = images.map(image => {
 });
 
 galleryList.append(...galleryItems);
+
+ galleryList.addEventListener('click', event => {
+    event.preventDefault();
+    if (event.target.classList.contains('gallery-image')) {
+      const largeImageSource =
+        event.target.dataset.source;
+      
+      console.log('Clicked on large image:', largeImageSource);
+  }
+  
+  });
