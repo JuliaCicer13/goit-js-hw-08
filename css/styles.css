@@ -1,11 +1,24 @@
 .gallery{ 
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    display: flex;
+    gap: 24px 24px;
     padding: 24px 156px;
-    margin: 0 auto;
     max-width: 1440px;
-   
+    height: 696px;
+    flex-wrap: wrap;
+    align-content: flex-start;
+   background-color: #FFF;
 }
+.gallery-item{
+    width: calc(100% - 24px);
+}
+.gallery-image{
+width: 360px;
+height: 200px;
+flex-shrink: 0;}
 
+
+.gallery-image:hover {
+width: 376px;
+height: 208px;
+}
