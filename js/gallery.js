@@ -100,7 +100,13 @@ galleryList.append(...galleryItems);
         event.target.dataset.source;
       
       const instance =
-        basicLightbox.create(`<img src="${largeImageSource}" alt="LargeImage">`);
+        basicLightbox.create(`<img src="${largeImageSource}" alt="LargeImage" width="800" heigth="600">`, {
+          onShow: (instance) => {
+            const modalImage =
+              instance.element().querySelector('img');
+            modalImage.src = largeImageSource;
+          }
+        });
       instance.show();
       
       
