@@ -114,4 +114,6 @@ galleryList.append(...galleryItems);
       console.log('Clicked on large image:', largeImageSource);
   }
   
-  });
+ });
+  
+ 
