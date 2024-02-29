@@ -9,9 +9,7 @@
     align-content: flex-start;
    background-color: #FFF;
 }
-.gallery-item{
-    width: calc(100% - 24px);
-}
+
 .gallery-image{
 width: 360px;
 height: 200px;
