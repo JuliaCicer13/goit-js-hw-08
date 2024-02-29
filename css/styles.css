@@ -1,11 +1,11 @@
 .gallery{ 
     list-style: none;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    column-gap: 24px;
-    row-gap: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+   padding: 24px 156px;
+    margin: 0 auto;
+    max-width: 1440px;
+   
 }
 
-.gallery-item{width: calc((100% - 50px) / 2);}
-.gallery-image{width: 550px;}
