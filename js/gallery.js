@@ -116,4 +116,4 @@ galleryList.append(...galleryItems);
   
  });
   
- 
+  
