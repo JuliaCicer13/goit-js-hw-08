@@ -116,4 +116,32 @@ galleryList.append(...galleryItems);
   
  });
   
-  
+  localStorage.setItem("ui-theme", "light");
+
+console.log(localStorage); // Storage {ui-theme: "light", length: 1}
+const settings = {
+theme: "dark",
+  isAuthenticated: true,
+  options: [1, 2, 3],
+
+
+
+}
+
+localStorage.setItem("settings", JSON.stringify(settings));
+
+
+const form = document.querySelector(".feedback-form");
+const localStorageKey = "goit-example-message";
+
+form.elements.message.value = localStorage.getItem(localStorageKey) ?? "";
+
+form.addEventListener("input", (evt) => {
+  localStorage.setItem(localStorageKey, evt.target.value);
+});
+
+form.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  localStorage.removeItem(localStorageKey);
+  form.reset();
+});
