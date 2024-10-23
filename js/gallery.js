@@ -63,85 +63,52 @@ const images = [
     description: 'Lighthouse Coast Sea',
   },
 ];
+
 const galleryList = document.querySelector('.gallery');
-galleryList.classList.add('gallery');
 
- 
-const galleryItems = images.map(image => {
 
-  const listItem = document.createElement('li');
-  listItem.classList.add('gallery-item');
-
-  const linkElement = document.createElement('a');
-  linkElement.href = image.original;
-  linkElement.classList.add('gallery-link');
+galleryItems.addEventListener('click', (event) => {
   
-
-  const imageElement = document.createElement('img');
-  imageElement.classList.add('gallery-image');
-  imageElement.src = image.preview;
-  imageElement.alt = image.description;
-  imageElement.setAttribute('data-source', image.original);
-
-  linkElement.appendChild(imageElement);
-  listItem.appendChild(linkElement);
-
-
+  const galleryItems = images.map(image => {
   
-  return listItem;
-});
-
-galleryList.append(...galleryItems);
-
- galleryList.addEventListener('click', event => {
     event.preventDefault();
-    if (event.target.classList.contains('gallery-image')) {
-      const largeImageSource =
-        event.target.dataset.source;
-      
-      const instance =
-        basicLightbox.create(`<img src="${largeImageSource}" alt="LargeImage" width="800" heigth="600">`, {
-          onShow: (instance) => {
-            const modalImage =
-              instance.element().querySelector('img');
-            modalImage.src = largeImageSource;
-          }
-        });
-      instance.show();
-      
-      
-      
-      console.log('Clicked on large image:', largeImageSource);
-  }
-  
- });
-  
-  localStorage.setItem("ui-theme", "light");
-
-console.log(localStorage); // Storage {ui-theme: "light", length: 1}
-const settings = {
-theme: "dark",
-  isAuthenticated: true,
-  options: [1, 2, 3],
+    event.carrentTarget;
+    event.target;
 
 
+  const createItem = document.createElement('.li');
+  createItem.classList = 'gallery-item';
+  const galleryLink = document.createElement('.a');
+  galleryLink.classList = 'gallery-link';
+ const galleryImage = document.createElement('img');
+  galleryImage.classList = 'gallery-image';
+  galleryImage.src = 'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg';
 
-}
+  galleryImage.alt = 'Image description';
+  const imageModalWindow = imgElement.getAttribute('data-source');
+  imgElement.src = imageModalWindow;
 
-localStorage.setItem("settings", JSON.stringify(settings));
+  galleryLink.append(galleryImage);
+  createItem.append(galleryLink);
 
-
-const form = document.querySelector(".feedback-form");
-const localStorageKey = "goit-example-message";
-
-form.elements.message.value = localStorage.getItem(localStorageKey) ?? "";
-
-form.addEventListener("input", (evt) => {
-  localStorage.setItem(localStorageKey, evt.target.value);
+  return createItem;
 });
 
-form.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  localStorage.removeItem(localStorageKey);
-  form.reset();
-});
+  galleryList.append(...galleryItems);
+
+
+
+
+const instance = basicLightbox.create(`
+    <div class="modal">
+        <p>
+            Your first lightbox with just a few lines of code.
+            Yes, it's really that simple.
+        </p>
+    </div>
+`)
+
+instance.show()
+
+
+})
