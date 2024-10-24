@@ -66,27 +66,25 @@ const images = [
 
 const galleryList = document.querySelector('.gallery');
 
-
-galleryItems.addEventListener('click', (event) => {
   
-  const galleryItems = images.map(image => {
+const galleryItems = images.map(({ preview, original, description }) => {
   
-    event.preventDefault();
-    event.carrentTarget;
-    event.target;
+
+  const createItem = document.createElement('li');
+  createItem.classList.add('gallery-item');
+
+  const galleryLink = document.createElement('a');
+  galleryLink.classList.add('gallery-link');
+  galleryLink.href = original;
+  galleryLink.setAttribute('data-source', original)
 
 
-  const createItem = document.createElement('.li');
-  createItem.classList = 'gallery-item';
-  const galleryLink = document.createElement('.a');
-  galleryLink.classList = 'gallery-link';
+
  const galleryImage = document.createElement('img');
-  galleryImage.classList = 'gallery-image';
-  galleryImage.src = 'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg';
-
-  galleryImage.alt = 'Image description';
-  const imageModalWindow = imgElement.getAttribute('data-source');
-  imgElement.src = imageModalWindow;
+  galleryImage.classList.add('gallery-image');
+  galleryImage.src = preview;
+  galleryImage.alt = description;
+  
 
   galleryLink.append(galleryImage);
   createItem.append(galleryLink);
@@ -97,18 +95,28 @@ galleryItems.addEventListener('click', (event) => {
   galleryList.append(...galleryItems);
 
 
+galleryList.addEventListener('click', (event) => {
+
+  event.preventDefault()
+  
+  if (event.target.nodeName !== 'IMG') return;
+
+  const LargeImageURL =
+    event.target.closest('a').getAttribute('data-source');
 
 
-const instance = basicLightbox.create(`
-    <div class="modal">
-        <p>
-            Your first lightbox with just a few lines of code.
-            Yes, it's really that simple.
-        </p>
-    </div>
-`)
 
-instance.show()
+  const instance =
+    basicLightbox.create(`<img src="${LargeImageURL}" 
+    width="800" height = "600">
+    `);
+
+  instance.show();
+
+});
 
 
-})
+
+
+
+
