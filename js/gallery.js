@@ -110,9 +110,7 @@ galleryList.addEventListener('click', (event) => {
     basicLightbox.create(`<img src="${LargeImageURL}" 
     width="800" height = "600">
     `);
-
-  instance.show();
-
+instance.show();
 });
 
 
