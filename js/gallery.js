@@ -100,6 +100,7 @@ galleryList.append(...galleryItems);
 galleryList.addEventListener("click", handleFunction);
 
 function handleFunction(event) {
+  event.preventDefault();
   event.target;
   if (event.target.nodeName !== "IMG") {
     return alert('It`s not image!')

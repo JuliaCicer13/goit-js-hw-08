@@ -13,7 +13,7 @@ ul.gallery {
     gap: 10px;
 }
 
-.gallery-item {
+.gallery-children {
     flex: 0 0 calc(33.3333% - 10px);
     box-sizing: border-box;
 }
@@ -31,7 +31,7 @@ ul.gallery {
     transform: scale(1.05);
 }
 
-.gallery-image {
+.image-items {
     display: block;
     width: 100%;
     height: auto;
