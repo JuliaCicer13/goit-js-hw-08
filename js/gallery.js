@@ -67,54 +67,50 @@ const images = [
 const galleryList = document.querySelector('.gallery');
 
   
-const galleryItems = images.map(({ preview, original, description }) => {
+const galleryItems = images.map(({preview, original, description}) => {
   
-
-  const createItem = document.createElement('li');
-  createItem.classList.add('gallery-item');
-
-  const galleryLink = document.createElement('a');
+  const galleryChildren = document.createElement("li");
+  galleryChildren.classList.add('gallery-children');
+  
+  const galleryLink = document.createElement("a");
   galleryLink.classList.add('gallery-link');
-  galleryLink.href = original;
-  galleryLink.setAttribute('data-source', original)
+  galleryLink.setAttribute('data-cource', original);
+
+  const itemImages = document.createElement("img");
+  itemImages.classList.add('image-items');
+  itemImages.src = preview;
+  itemImages.alt = description;
+
+  galleryLink.append(itemImages);
+  galleryChildren.append(galleryLink);
+
+  return galleryChildren;
 
 
 
- const galleryImage = document.createElement('img');
-  galleryImage.classList.add('gallery-image');
-  galleryImage.src = preview;
-  galleryImage.alt = description;
+
+
+})
+
+galleryList.append(...galleryItems);
+
+
+
+
+galleryList.addEventListener("click", handleFunction);
+
+function handleFunction(event) {
+  event.target;
+  if (event.target.nodeName !== "IMG") {
+    return alert('It`s not image!')
+  }
   
 
-  galleryLink.append(galleryImage);
-  createItem.append(galleryLink);
 
-  return createItem;
-});
+const instance = basicLightbox.create(`
+   <img src="https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677_1280.jpg" width="900" height="700">
+`)
 
-  galleryList.append(...galleryItems);
-
-
-galleryList.addEventListener('click', (event) => {
-
-  event.preventDefault()
-  
-  if (event.target.nodeName !== 'IMG') return;
-
-  const LargeImageURL =
-    event.target.closest('a').getAttribute('data-source');
-
-
-
-  const instance =
-    basicLightbox.create(`<img src="${LargeImageURL}" 
-    width="800" height = "600">
-    `);
-instance.show();
-});
-
-
-
-
-
+instance.show()
+}
 
